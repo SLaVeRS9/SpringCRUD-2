@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -17,10 +19,12 @@ import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan("ru.slavers9.springCRUD_1")
+@PropertySource("classpath:application.properties")
 @EnableWebMvc
 @RequiredArgsConstructor
 public class SpringConfiguration implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
+    private final Environment env;
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -49,10 +53,10 @@ public class SpringConfiguration implements WebMvcConfigurer {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/forSpringCRUD_1");
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres");
+        dataSource.setDriverClassName(env.getRequiredProperty("datasource.driver_class_name"));
+        dataSource.setUrl(env.getRequiredProperty("datasource.url"));
+        dataSource.setUsername(env.getRequiredProperty("datasource.name"));
+        dataSource.setPassword(env.getRequiredProperty("datasource.password"));
         return dataSource;
     }
 
