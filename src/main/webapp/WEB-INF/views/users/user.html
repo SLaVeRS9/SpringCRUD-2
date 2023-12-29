@@ -22,12 +22,17 @@
     <br>
     <!--Back-->
     <form method="get" th:action="@{/users}">
-        <input type="submit" value="Back"/>
+        <input type="submit" value="Back to users list"/>
     </form>
-    <!--Edit-->
+    <!--Edit user-->
     <form method="get"
           th:action="@{/users/{id}/edit(id=${user.getId()})}">
-        <input type="submit" value="Edit"/>
+        <input type="submit" value="Edit user"/>
+    </form>
+    <!--Delete user-->
+    <form th:method="DELETE"
+          th:action="@{/users/{id}(id=${user.getId()})}">
+        <input type="submit" value="Delete user"/>
     </form>
 </body>
 </html>

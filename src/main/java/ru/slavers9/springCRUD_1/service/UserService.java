@@ -23,4 +23,12 @@ public class UserService {
     public void editUser(UserModel user, Long id) {
         userRepository.editUser(user, id);
     }
+
+    public void addUser(UserModel user) {
+        userRepository.addUser(user);
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteUser(id);
+    }
 }

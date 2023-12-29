@@ -1,13 +1,11 @@
 package ru.slavers9.springCRUD_1.repository;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.slavers9.springCRUD_1.models.UserModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -27,9 +25,17 @@ public class UserRepository {
     }
 
     public void editUser(UserModel user, Long id) {
-        UserModel userToBeUpdated = user;
-
+        String query = "UPDATE Users SET name=?, age=?, email=? WHERE id=?";
+        jdbcTemplate.update(query, user.getName(), user.getAge(), user.getEmail(), id);
     }
 
+    public void addUser(UserModel user) {
+        String query = "INSERT INTO Users VALUES (default, ?, ?, ?)";
+        jdbcTemplate.update(query, user.getName(), user.getAge(), user.getEmail());
+    }
 
+    public void deleteUser(Long id) {
+        String query = "DELETE FROM Users WHERE id=?";
+        jdbcTemplate.update(query, id);
+    }
 }
