@@ -26,8 +26,9 @@ public class UserRepository {
                 .stream().findAny().orElseThrow();
     }
 
-    public UserModel editUser(Long id) {
-        return getUserById(id);
+    public void editUser(UserModel user, Long id) {
+        UserModel userToBeUpdated = user;
+
     }
 
 

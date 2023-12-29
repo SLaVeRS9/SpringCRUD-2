@@ -29,8 +29,8 @@ public class UsersController {
     //TODO
     @PatchMapping("/{id}")
     public String editUser(@ModelAttribute("user") UserModel user, @PathVariable("id") Long id) {
-        userService.editUser(id);
-        return "users/edit";
+        userService.editUser(user, id);
+        return "redirect:users/{id}";
     }
 
     @GetMapping("/{id}/edit")

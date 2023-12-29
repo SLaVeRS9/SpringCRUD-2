@@ -20,7 +20,7 @@ public class UserService {
         return userRepository.getUserById(id);
     }
 
-    public UserModel editUser(Long id) {
-        return userRepository.editUser(id);
+    public void editUser(UserModel user, Long id) {
+        userRepository.editUser(user, id);
     }
 }
