@@ -1,10 +1,9 @@
-package ru.slavers9.springCRUD_1.service;
+package ru.slavers9.springCRUD_2.service;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.slavers9.springCRUD_1.models.UserModel;
-import ru.slavers9.springCRUD_1.repository.UserRepository;
+import ru.slavers9.springCRUD_2.models.UserModel;
+import ru.slavers9.springCRUD_2.repository.UserRepository;
 
 import java.util.List;
 

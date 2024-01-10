@@ -1,7 +1,7 @@
-package ru.slavers9.springCRUD_1.mappers;
+package ru.slavers9.springCRUD_2.mappers;
 
 import org.springframework.jdbc.core.RowMapper;
-import ru.slavers9.springCRUD_1.models.UserModel;
+import ru.slavers9.springCRUD_2.models.UserModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
