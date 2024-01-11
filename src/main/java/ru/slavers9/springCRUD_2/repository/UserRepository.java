@@ -14,14 +14,14 @@ import java.util.List;
 public class UserRepository {
     SessionFactory sessionFactory;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<UserModel> getAllUsers() {
         Session session = sessionFactory.getCurrentSession();
         Query<UserModel> query = session.createQuery("FROM UserModel");
         return query.getResultList();
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public UserModel getUserById(Long id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(UserModel.class, id);
